@@ -1,28 +1,32 @@
 import { store } from "./store";
-import * as actions from "./actionTypes";
+// import * as actions from "./actionTypes";
+import { bugAdded, bugResolved } from "./actions";
 
 // state = reducer(state, action)'
 // notify the subscribers
 
-const unsubscribe = store.subscribe(() => {
-  console.log("Store changed!", store.getState());
-});
-unsubscribe();
+store.dispatch(bugAdded("Bug 1"));
+store.dispatch(bugResolved(1));
 
-store.dispatch({
-  type: actions.BUG_ADDED,
-  payload: {
-    description: "Bug1",
-  },
-});
+// const unsubscribe = store.subscribe(() => {
+//   console.log("Store changed!", store.getState());
+// });
+// unsubscribe();
 
-store.dispatch({
-  type: actions.BUG_REMOVED,
-  payload: {
-    id: 1,
-  },
-});
-console.log(store.getState());
+// store.dispatch({
+//   type: actions.BUG_ADDED,
+//   payload: {
+//     description: "Bug1",
+//   },
+// });
+
+// store.dispatch({
+//   type: actions.BUG_REMOVED,
+//   payload: {
+//     id: 1,
+//   },
+// });
+// console.log(store.getState());
 
 // //console.log("Hello World!");
 // // function sayHello(){
